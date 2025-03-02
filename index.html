@@ -6,53 +6,75 @@
     <title>My Link</title>
     <!-- 替換 CSS 為 Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'japanese-purple': '#CEC7F4',
+                        'japanese-lavender': '#E6E1FF',
+                        'japanese-light': '#F5F3FF',
+                        'japanese-accent': '#8A7CBB',
+                        'japanese-dark': '#6A5F99'
+                    }
+                }
+            }
+        }
+    </script>
     <!-- 加入 iconify-icon CDN -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center py-10 px-4">
+<body class="bg-japanese-light min-h-screen flex flex-col items-center py-10 px-4">
     <header class="flex flex-col items-center mb-8">
-        <img src="images/avatar.webp" alt="cash" class="w-24 h-24 rounded-full mb-4">
-        <h1 class="text-2xl font-bold text-gray-800">Cash Wu</h1>
+        <div class="relative overflow-hidden rounded-full mb-4 group">
+            <img src="images/avatar.webp" alt="cash" class="w-24 h-24 rounded-full transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-xl">
+            <div class="absolute inset-0 bg-japanese-accent opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-500"></div>
+        </div>
+        <h1 class="text-2xl font-bold text-japanese-dark">Cash Wu</h1>
     </header>
     <main class="w-full max-w-md">
         <ul class="space-y-6">
             <li>
-                <a href="https://blog.cashwu.com" target="_blank" rel="noopener" class="flex items-center p-6 bg-white rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <iconify-icon icon="mdi:blog" width="32" height="32" class="text-blue-500"></iconify-icon>
-                    <span class="text-gray-700 text-lg font-medium flex-grow text-center">Blog</span>
+                <a href="https://blog.cashwu.com" target="_blank" rel="noopener" class="flex items-center p-6 bg-japanese-lavender rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105 border border-japanese-purple/30">
+                    <iconify-icon icon="mdi:blog" width="32" height="32" class="text-japanese-dark"></iconify-icon>
+                    <span class="text-japanese-dark text-lg font-medium flex-grow text-center">Blog</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.facebook.com/cashwugeek" target="_blank" rel="noopener" class="flex items-center p-6 bg-white rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <iconify-icon icon="mdi:facebook" width="32" height="32" class="text-blue-600"></iconify-icon>
-                    <span class="text-gray-700 text-lg font-medium flex-grow text-center">FB 粉絲頁</span>
+                <a href="https://www.facebook.com/cashwugeek" target="_blank" rel="noopener" class="flex items-center p-6 bg-japanese-lavender rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105 border border-japanese-purple/30">
+                    <iconify-icon icon="mdi:facebook" width="32" height="32" class="text-japanese-dark"></iconify-icon>
+                    <span class="text-japanese-dark text-lg font-medium flex-grow text-center">FB 粉絲頁</span>
                 </a>
             </li>
             <li>
-                <a href="https://x.com/CashWuGeek" target="_blank" rel="noopener" class="flex items-center p-6 bg-white rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <iconify-icon icon="mdi:twitter" width="32" height="32" class="text-blue-400"></iconify-icon>
-                    <span class="text-gray-700 text-lg font-medium flex-grow text-center">X (Twitter)</span>
+                <a href="https://x.com/CashWuGeek" target="_blank" rel="noopener" class="flex items-center p-6 bg-japanese-lavender rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105 border border-japanese-purple/30">
+                    <iconify-icon icon="mdi:twitter" width="32" height="32" class="text-japanese-dark"></iconify-icon>
+                    <span class="text-japanese-dark text-lg font-medium flex-grow text-center">X (Twitter)</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.threads.net/@cashwugeek" target="_blank" rel="noopener" class="flex items-center p-6 bg-white rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <iconify-icon icon="simple-icons:threads" width="32" height="32" class="text-gray-800"></iconify-icon>
-                    <span class="text-gray-700 text-lg font-medium flex-grow text-center">Threads</span>
+                <a href="https://www.threads.net/@cashwugeek" target="_blank" rel="noopener" class="flex items-center p-6 bg-japanese-lavender rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105 border border-japanese-purple/30">
+                    <iconify-icon icon="simple-icons:threads" width="32" height="32" class="text-japanese-dark"></iconify-icon>
+                    <span class="text-japanese-dark text-lg font-medium flex-grow text-center">Threads</span>
                 </a>
             </li>
             <li>
-                <a href="https://github.com/cashwu" target="_blank" rel="noopener" class="flex items-center p-6 bg-white rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <iconify-icon icon="mdi:github" width="32" height="32" class="text-gray-900"></iconify-icon>
-                    <span class="text-gray-700 text-lg font-medium flex-grow text-center">GitHub</span>
+                <a href="https://github.com/cashwu" target="_blank" rel="noopener" class="flex items-center p-6 bg-japanese-lavender rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105 border border-japanese-purple/30">
+                    <iconify-icon icon="mdi:github" width="32" height="32" class="text-japanese-dark"></iconify-icon>
+                    <span class="text-japanese-dark text-lg font-medium flex-grow text-center">GitHub</span>
                 </a>
             </li>
             <li>
-                <a href="mailto:cashwugeek@icloud.com" target="_blank" rel="noopener" class="flex items-center p-6 bg-white rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                    <iconify-icon icon="mdi:email" width="32" height="32" class="text-red-500"></iconify-icon>
-                    <span class="text-gray-700 text-lg font-medium flex-grow text-center">Email</span>
+                <a href="mailto:cashwugeek@icloud.com" target="_blank" rel="noopener" class="flex items-center p-6 bg-japanese-lavender rounded-lg shadow hover:shadow-lg transition-all duration-300 transform hover:scale-105 border border-japanese-purple/30">
+                    <iconify-icon icon="mdi:email" width="32" height="32" class="text-japanese-dark"></iconify-icon>
+                    <span class="text-japanese-dark text-lg font-medium flex-grow text-center">電子郵件</span>
                 </a>
             </li>
         </ul>
     </main>
+    <footer class="mt-10 text-japanese-accent/70 text-sm">
+        <p>© 2024 Cash Wu</p>
+    </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>
