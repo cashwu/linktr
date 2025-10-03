@@ -9,6 +9,18 @@
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
 
         <style>
+            :root {
+                /* 野獸派紫色系配色 */
+                --fauve-purple-1: #8B2FC9;
+                --fauve-purple-2: #D946EF;
+                --fauve-purple-3: #5B21B6;
+                --fauve-purple-4: #A855F7;
+                --fauve-yellow: #FBBF24;
+                --fauve-orange: #FB923C;
+                --fauve-cyan: #2DD4BF;
+                --fauve-pink: #EC4899;
+            }
+
             * {
                 margin: 0;
                 padding: 0;
@@ -19,11 +31,11 @@
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
                 min-height: 100vh;
                 overflow-x: hidden;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: var(--fauve-purple-1);
                 position: relative;
             }
 
-            /* 動態背景 */
+            /* 野獸派複雜幾何背景 */
             .background {
                 position: fixed;
                 top: 0;
@@ -31,11 +43,11 @@
                 width: 100%;
                 height: 100%;
                 z-index: -1;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-                background-size: 400% 400%;
-                animation: gradientShift 15s ease infinite;
+                background: var(--fauve-purple-1);
+                overflow: hidden;
             }
 
+            /* 小型點綴色塊 */
             .background::before {
                 content: "";
                 position: absolute;
@@ -44,32 +56,31 @@
                 width: 100%;
                 height: 100%;
                 background:
-                    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
-                animation: float 20s ease-in-out infinite;
+                    radial-gradient(circle at 15% 20%, var(--fauve-purple-2) 0%, var(--fauve-purple-2) 5%, transparent 5%),
+                    radial-gradient(circle at 85% 15%, var(--fauve-orange) 0%, var(--fauve-orange) 4%, transparent 4%),
+                    radial-gradient(circle at 70% 80%, var(--fauve-cyan) 0%, var(--fauve-cyan) 6%, transparent 6%),
+                    radial-gradient(circle at 30% 75%, var(--fauve-yellow) 0%, var(--fauve-yellow) 3.5%, transparent 3.5%),
+                    radial-gradient(circle at 90% 60%, var(--fauve-pink) 0%, var(--fauve-pink) 3%, transparent 3%),
+                    radial-gradient(circle at 45% 10%, var(--fauve-purple-4) 0%, var(--fauve-purple-4) 2.5%, transparent 2.5%),
+                    radial-gradient(circle at 20% 50%, var(--fauve-purple-2) 0%, var(--fauve-purple-2) 2%, transparent 2%),
+                    radial-gradient(circle at 95% 85%, var(--fauve-yellow) 0%, var(--fauve-yellow) 2.5%, transparent 2.5%);
             }
 
-            @keyframes gradientShift {
-                0%,
-                100% {
-                    background-position: 0% 50%;
-                }
-                50% {
-                    background-position: 100% 50%;
-                }
-            }
-
-            @keyframes float {
-                0%,
-                100% {
-                    transform: translateY(0px) rotate(0deg);
-                }
-                33% {
-                    transform: translateY(-30px) rotate(0.5deg);
-                }
-                66% {
-                    transform: translateY(15px) rotate(-0.5deg);
-                }
+            /* 幾何線條與形狀 */
+            .background::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background:
+                    linear-gradient(45deg, transparent 48%, var(--fauve-purple-4) 48%, var(--fauve-purple-4) 52%, transparent 52%),
+                    linear-gradient(-45deg, transparent 35%, var(--fauve-purple-3) 35%, var(--fauve-purple-3) 38%, transparent 38%),
+                    linear-gradient(135deg, transparent 62%, var(--fauve-purple-2) 62%, var(--fauve-purple-2) 65%, transparent 65%),
+                    repeating-linear-gradient(90deg, transparent, transparent 50px, var(--fauve-purple-3) 50px, var(--fauve-purple-3) 53px, transparent 53px, transparent 100px),
+                    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255, 255, 255, 0.1) 60px, rgba(255, 255, 255, 0.1) 62px);
+                opacity: 0.6;
             }
 
             /* 主容器 */
@@ -83,16 +94,7 @@
                 position: relative;
             }
 
-            /* 毛玻璃效果 */
-            .glass {
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            }
-
-            /* 頭像區域 */
+            /* 野獸派頭像區域 */
             .profile-section {
                 text-align: center;
                 margin-bottom: 3rem;
@@ -105,31 +107,38 @@
             }
 
             .avatar {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
                 border-radius: 50%;
-                border: 3px solid rgba(255, 255, 255, 0.3);
-                transition: all 0.3s ease;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                border: 6px solid #000;
+                box-shadow: 8px 8px 0 var(--fauve-yellow);
+                transition: all 0.2s ease;
             }
 
             .avatar:hover {
-                transform: scale(1.05);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+                transform: translate(-4px, -4px);
+                box-shadow: 12px 12px 0 var(--fauve-yellow);
             }
 
             .name {
-                font-size: 2rem;
-                font-weight: 600;
-                color: white;
-                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                font-size: 3rem;
+                font-weight: 900;
+                color: #fff;
+                text-shadow:
+                    4px 4px 0 #000,
+                    -1px -1px 0 #000,
+                    1px -1px 0 #000,
+                    -1px 1px 0 #000,
+                    1px 1px 0 #000;
                 margin-bottom: 0.5rem;
+                letter-spacing: 2px;
             }
 
             .subtitle {
-                font-size: 1rem;
-                color: rgba(255, 255, 255, 0.8);
-                font-weight: 300;
+                font-size: 1.2rem;
+                color: var(--fauve-yellow);
+                font-weight: 700;
+                text-transform: uppercase;
             }
 
             /* 連結容器 */
@@ -141,86 +150,90 @@
                 gap: 1rem;
             }
 
-            /* 連結卡片 */
+            /* 野獸派連結卡片 */
             .link-card {
                 display: flex;
                 align-items: center;
-                padding: 1.2rem 1.5rem;
+                padding: 1.5rem 2rem;
                 text-decoration: none;
-                color: white;
-                border-radius: 16px;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                color: #000;
+                font-weight: 700;
+                border-radius: 8px;
+                border: 5px solid #000;
+                transition: all 0.2s ease;
                 position: relative;
-                overflow: hidden;
+                overflow: visible;
             }
 
-            .link-card::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            .link-card:hover::before {
-                opacity: 1;
-            }
+            /* 為每張卡片設定不同的野獸派色彩 */
+            .link-card:nth-child(1) { background: var(--fauve-purple-2); }
+            .link-card:nth-child(2) { background: var(--fauve-yellow); }
+            .link-card:nth-child(3) { background: var(--fauve-purple-4); }
+            .link-card:nth-child(4) { background: var(--fauve-orange); }
+            .link-card:nth-child(5) { background: var(--fauve-cyan); }
+            .link-card:nth-child(6) { background: var(--fauve-purple-3); color: #fff; }
+            .link-card:nth-child(7) { background: var(--fauve-pink); }
+            .link-card:nth-child(8) { background: var(--fauve-purple-1); color: #fff; }
 
             .link-card:hover {
-                transform: translateY(-2px) scale(1.02);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-                border-color: rgba(255, 255, 255, 0.3);
+                transform: translate(-3px, -3px);
+                box-shadow: 8px 8px 0 #000;
             }
 
             .link-card:active {
-                transform: translateY(0) scale(0.98);
+                transform: translate(0, 0);
+                box-shadow: 3px 3px 0 #000;
             }
 
             .link-icon {
                 margin-right: 1rem;
-                opacity: 0.9;
-                transition: all 0.3s ease;
-            }
-
-            .link-card:hover .link-icon {
-                opacity: 1;
-                transform: scale(1.1);
+                filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
             }
 
             .link-text {
                 flex: 1;
                 text-align: center;
-                font-size: 1.1rem;
-                font-weight: 500;
+                font-size: 1.2rem;
+                font-weight: 800;
                 letter-spacing: 0.5px;
+                text-transform: uppercase;
             }
 
-            /* 頁腳 */
+            /* 野獸派頁腳 */
             .footer {
                 margin-top: 3rem;
                 text-align: center;
-                color: rgba(255, 255, 255, 0.6);
-                font-size: 0.9rem;
-                font-weight: 300;
+                color: #fff;
+                font-size: 1rem;
+                font-weight: 700;
+                text-shadow: 2px 2px 0 #000;
             }
 
-            /* 響應式設計 */
+            /* 野獸派響應式設計 */
             @media (max-width: 480px) {
                 .container {
                     padding: 1.5rem 1rem;
                 }
 
                 .name {
-                    font-size: 1.8rem;
+                    font-size: 2.2rem;
+                    text-shadow:
+                        3px 3px 0 #000,
+                        -1px -1px 0 #000,
+                        1px -1px 0 #000,
+                        -1px 1px 0 #000,
+                        1px 1px 0 #000;
                 }
 
                 .avatar {
-                    width: 100px;
-                    height: 100px;
+                    width: 120px;
+                    height: 120px;
+                    border: 5px solid #000;
+                    box-shadow: 6px 6px 0 var(--fauve-yellow);
+                }
+
+                .avatar:hover {
+                    box-shadow: 8px 8px 0 var(--fauve-yellow);
                 }
 
                 .links-container {
@@ -228,7 +241,12 @@
                 }
 
                 .link-card {
-                    padding: 1rem 1.2rem;
+                    padding: 1.2rem 1.5rem;
+                    border: 4px solid #000;
+                }
+
+                .link-card:hover {
+                    box-shadow: 6px 6px 0 #000;
                 }
 
                 .link-text {
@@ -236,57 +254,39 @@
                 }
             }
 
-            /* 載入動畫 */
+            /* 野獸派簡化動畫 */
             .fade-in {
-                animation: fadeInUp 0.6s ease forwards;
+                animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
             }
 
-            .fade-in:nth-child(1) {
-                animation-delay: 0.1s;
-            }
-            .fade-in:nth-child(2) {
-                animation-delay: 0.2s;
-            }
-            .fade-in:nth-child(3) {
-                animation-delay: 0.3s;
-            }
-            .fade-in:nth-child(4) {
-                animation-delay: 0.4s;
-            }
-            .fade-in:nth-child(5) {
-                animation-delay: 0.5s;
-            }
-            .fade-in:nth-child(6) {
-                animation-delay: 0.6s;
-            }
-            .fade-in:nth-child(7) {
-                animation-delay: 0.7s;
-            }
+            .fade-in:nth-child(1) { animation-delay: 0.05s; }
+            .fade-in:nth-child(2) { animation-delay: 0.1s; }
+            .fade-in:nth-child(3) { animation-delay: 0.15s; }
+            .fade-in:nth-child(4) { animation-delay: 0.2s; }
+            .fade-in:nth-child(5) { animation-delay: 0.25s; }
+            .fade-in:nth-child(6) { animation-delay: 0.3s; }
+            .fade-in:nth-child(7) { animation-delay: 0.35s; }
+            .fade-in:nth-child(8) { animation-delay: 0.4s; }
 
-            @keyframes fadeInUp {
+            @keyframes popIn {
                 from {
                     opacity: 0;
-                    transform: translateY(30px);
+                    transform: scale(0.8);
                 }
                 to {
                     opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            /* 微妙的脈動效果 */
-            .pulse {
-                animation: pulse 4s ease-in-out infinite;
-            }
-
-            @keyframes pulse {
-                0%,
-                100% {
                     transform: scale(1);
                 }
-                50% {
-                    transform: scale(1.02);
-                }
+            }
+
+            /* 頭像旋轉效果 */
+            .pulse {
+                animation: rotate 8s linear infinite;
+            }
+
+            @keyframes rotate {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
             }
         </style>
     </head>
@@ -303,43 +303,43 @@
             </div>
 
             <div class="links-container">
-                <a href="https://blog.cashwu.com" target="_blank" rel="noopener" class="link-card glass fade-in">
-                    <iconify-icon icon="mdi:blog" width="28" height="28" class="link-icon"></iconify-icon>
+                <a href="https://blog.cashwu.com" target="_blank" rel="noopener" class="link-card fade-in">
+                    <iconify-icon icon="mdi:blog" width="32" height="32" class="link-icon"></iconify-icon>
                     <span class="link-text">Blog</span>
                 </a>
 
-                <a href="https://www.elephantshine.com" target="_blank" rel="noopener" class="link-card glass fade-in">
-                    <iconify-icon icon="mdi:design" width="28" height="28" class="link-icon"></iconify-icon>
+                <a href="https://www.elephantshine.com" target="_blank" rel="noopener" class="link-card fade-in">
+                    <iconify-icon icon="mdi:design" width="32" height="32" class="link-icon"></iconify-icon>
                     <span class="link-text">象晴設計工作室</span>
                 </a>
 
-                <a href="https://www.facebook.com/cashwugeek" target="_blank" rel="noopener" class="link-card glass fade-in">
-                    <iconify-icon icon="mdi:facebook" width="28" height="28" class="link-icon"></iconify-icon>
+                <a href="https://www.facebook.com/cashwugeek" target="_blank" rel="noopener" class="link-card fade-in">
+                    <iconify-icon icon="mdi:facebook" width="32" height="32" class="link-icon"></iconify-icon>
                     <span class="link-text">FB 粉絲頁</span>
                 </a>
 
-                <a href="https://www.threads.net/@cashwugeek" target="_blank" rel="noopener" class="link-card glass fade-in">
-                    <iconify-icon icon="simple-icons:threads" width="28" height="28" class="link-icon"></iconify-icon>
+                <a href="https://www.threads.net/@cashwugeek" target="_blank" rel="noopener" class="link-card fade-in">
+                    <iconify-icon icon="simple-icons:threads" width="32" height="32" class="link-icon"></iconify-icon>
                     <span class="link-text">Threads</span>
                 </a>
 
-                <a href="https://x.com/CashWuGeek" target="_blank" rel="noopener" class="link-card glass fade-in">
-                    <iconify-icon icon="mdi:twitter" width="28" height="28" class="link-icon"></iconify-icon>
+                <a href="https://x.com/CashWuGeek" target="_blank" rel="noopener" class="link-card fade-in">
+                    <iconify-icon icon="mdi:twitter" width="32" height="32" class="link-icon"></iconify-icon>
                     <span class="link-text">X (Twitter)</span>
                 </a>
 
-                <a href="https://github.com/cashwu" target="_blank" rel="noopener" class="link-card glass fade-in">
-                    <iconify-icon icon="mdi:github" width="28" height="28" class="link-icon"></iconify-icon>
+                <a href="https://github.com/cashwu" target="_blank" rel="noopener" class="link-card fade-in">
+                    <iconify-icon icon="mdi:github" width="32" height="32" class="link-icon"></iconify-icon>
                     <span class="link-text">GitHub</span>
                 </a>
 
-                <a href="mailto:cashwugeek@icloud.com" target="_blank" rel="noopener" class="link-card glass fade-in">
-                    <iconify-icon icon="mdi:email" width="28" height="28" class="link-icon"></iconify-icon>
+                <a href="mailto:cashwugeek@icloud.com" target="_blank" rel="noopener" class="link-card fade-in">
+                    <iconify-icon icon="mdi:email" width="32" height="32" class="link-icon"></iconify-icon>
                     <span class="link-text">Email</span>
                 </a>
 
-                <a href="https://portaly.cc/cashwugeek" target="_blank" rel="noopener" class="link-card glass fade-in">
-                    <img src="portaly.webp" alt="Portaly" width="28" height="28" class="link-icon" style="border-radius: 6px" />
+                <a href="https://portaly.cc/cashwugeek" target="_blank" rel="noopener" class="link-card fade-in">
+                    <img src="portaly.webp" alt="Portaly" width="32" height="32" class="link-icon" style="border-radius: 6px" />
                     <span class="link-text">Portaly</span>
                 </a>
             </div>
@@ -350,66 +350,36 @@
         </div>
 
         <script>
-            // 添加一些互動效果
+            // 野獸派簡化互動效果
             document.addEventListener("DOMContentLoaded", function () {
-                // 為連結卡片添加點擊波紋效果
+                // 為連結卡片添加色彩變化效果
                 const linkCards = document.querySelectorAll(".link-card");
+                const colors = [
+                    'var(--fauve-purple-2)',
+                    'var(--fauve-yellow)',
+                    'var(--fauve-purple-4)',
+                    'var(--fauve-orange)',
+                    'var(--fauve-cyan)',
+                    'var(--fauve-purple-3)',
+                    'var(--fauve-pink)',
+                    'var(--fauve-purple-1)'
+                ];
 
-                linkCards.forEach((card) => {
-                    card.addEventListener("click", function (e) {
-                        // 創建波紋效果
-                        const ripple = document.createElement("div");
-                        const rect = card.getBoundingClientRect();
-                        const size = Math.max(rect.width, rect.height);
-                        const x = e.clientX - rect.left - size / 2;
-                        const y = e.clientY - rect.top - size / 2;
-
-                        ripple.style.cssText = `
-                        position: absolute;
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                        background: rgba(255, 255, 255, 0.3);
-                        border-radius: 50%;
-                        transform: scale(0);
-                        animation: ripple 0.6s ease-out;
-                        pointer-events: none;
-                    `;
-
-                        card.appendChild(ripple);
-
-                        setTimeout(() => {
-                            ripple.remove();
-                        }, 600);
+                linkCards.forEach((card, index) => {
+                    card.addEventListener('mouseenter', function() {
+                        // 隨機切換到另一個鮮豔顏色
+                        const currentIndex = index;
+                        let newIndex = currentIndex;
+                        while (newIndex === currentIndex) {
+                            newIndex = Math.floor(Math.random() * colors.length);
+                        }
+                        card.style.backgroundColor = colors[newIndex];
                     });
-                });
 
-                // 添加 CSS 動畫
-                const style = document.createElement("style");
-                style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(2);
-                        opacity: 0;
-                    }
-                }
-            `;
-                document.head.appendChild(style);
-            });
-
-            // 滑鼠移動視差效果
-            document.addEventListener("mousemove", function (e) {
-                const cards = document.querySelectorAll(".link-card");
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
-
-                cards.forEach((card, index) => {
-                    const speed = (index + 1) * 0.5;
-                    const xOffset = (x - 0.5) * speed;
-                    const yOffset = (y - 0.5) * speed;
-
-                    card.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                    card.addEventListener('mouseleave', function() {
+                        // 恢復原本的顏色
+                        card.style.backgroundColor = colors[index];
+                    });
                 });
             });
         </script>
