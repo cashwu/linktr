@@ -56,6 +56,53 @@
                 height: 100%;
                 z-index: -1;
                 background: linear-gradient(180deg, var(--latte-base), var(--latte-mantle));
+                overflow: hidden;
+            }
+
+            .background .blob {
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(60px);
+                opacity: 0.35;
+                animation: blobFloat 20s ease-in-out infinite alternate;
+            }
+
+            .background .blob:nth-child(1) {
+                width: 320px;
+                height: 320px;
+                background: var(--latte-lavender);
+                top: -80px;
+                right: -60px;
+                animation-duration: 7s;
+            }
+
+            .background .blob:nth-child(2) {
+                width: 250px;
+                height: 250px;
+                background: var(--latte-sapphire);
+                bottom: 10%;
+                left: -80px;
+                animation-duration: 6s;
+                animation-delay: -3s;
+            }
+
+            .background .blob:nth-child(3) {
+                width: 180px;
+                height: 180px;
+                background: #ea76cb;
+                top: 40%;
+                right: -40px;
+                opacity: 0.2;
+                animation-duration: 9s;
+                animation-delay: -6s;
+            }
+
+            @keyframes blobFloat {
+                0% { transform: translate(0, 0) scale(1); }
+                25% { transform: translate(40px, -50px) scale(1.1); }
+                50% { transform: translate(-30px, 40px) scale(0.9); }
+                75% { transform: translate(50px, 20px) scale(1.08); }
+                100% { transform: translate(-20px, -30px) scale(0.95); }
             }
 
             .container {
@@ -219,7 +266,11 @@
         </style>
     </head>
     <body>
-        <div class="background"></div>
+        <div class="background">
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+        </div>
 
         <div class="container">
             <div class="profile-section">
