@@ -5,20 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cash Wu Link</title>
 
+        <!-- Google Fonts: Noto Sans JP -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
         <!-- Iconify Icons -->
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
 
         <style>
             :root {
-                /* 野獸派紫色系配色 */
-                --fauve-purple-1: #8B2FC9;
-                --fauve-purple-2: #D946EF;
-                --fauve-purple-3: #5B21B6;
-                --fauve-purple-4: #A855F7;
-                --fauve-yellow: #FBBF24;
-                --fauve-orange: #FB923C;
-                --fauve-cyan: #2DD4BF;
-                --fauve-pink: #EC4899;
+                /* Catppuccin Latte */
+                --latte-base: #eff1f5;
+                --latte-mantle: #e6e9ef;
+                --latte-crust: #dce0e8;
+                --latte-surface0: #ccd0da;
+                --latte-surface1: #bcc0cc;
+                --latte-text: #4c4f69;
+                --latte-subtext0: #6c6f85;
+                --latte-subtext1: #5c5f77;
+                --latte-sapphire: #7c6bb4;
+                --latte-lavender: #7287fd;
+
+                /* MUJI shadow system */
+                --muji-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+                --muji: 0 2px 8px rgba(0, 0, 0, 0.06);
+                --muji-md: 0 4px 16px rgba(0, 0, 0, 0.08);
             }
 
             * {
@@ -28,14 +40,14 @@
             }
 
             body {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
                 min-height: 100vh;
                 overflow-x: hidden;
-                background: var(--fauve-purple-1);
+                background: var(--latte-base);
+                color: var(--latte-text);
                 position: relative;
             }
 
-            /* 野獸派複雜幾何背景 */
             .background {
                 position: fixed;
                 top: 0;
@@ -43,58 +55,21 @@
                 width: 100%;
                 height: 100%;
                 z-index: -1;
-                background: var(--fauve-purple-1);
-                overflow: hidden;
+                background: linear-gradient(180deg, var(--latte-base), var(--latte-mantle));
             }
 
-            /* 小型點綴色塊 */
-            .background::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background:
-                    radial-gradient(circle at 15% 20%, var(--fauve-purple-2) 0%, var(--fauve-purple-2) 5%, transparent 5%),
-                    radial-gradient(circle at 85% 15%, var(--fauve-orange) 0%, var(--fauve-orange) 4%, transparent 4%),
-                    radial-gradient(circle at 70% 80%, var(--fauve-cyan) 0%, var(--fauve-cyan) 6%, transparent 6%),
-                    radial-gradient(circle at 30% 75%, var(--fauve-yellow) 0%, var(--fauve-yellow) 3.5%, transparent 3.5%),
-                    radial-gradient(circle at 90% 60%, var(--fauve-pink) 0%, var(--fauve-pink) 3%, transparent 3%),
-                    radial-gradient(circle at 45% 10%, var(--fauve-purple-4) 0%, var(--fauve-purple-4) 2.5%, transparent 2.5%),
-                    radial-gradient(circle at 20% 50%, var(--fauve-purple-2) 0%, var(--fauve-purple-2) 2%, transparent 2%),
-                    radial-gradient(circle at 95% 85%, var(--fauve-yellow) 0%, var(--fauve-yellow) 2.5%, transparent 2.5%);
-            }
-
-            /* 幾何線條與形狀 */
-            .background::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background:
-                    linear-gradient(45deg, transparent 48%, var(--fauve-purple-4) 48%, var(--fauve-purple-4) 52%, transparent 52%),
-                    linear-gradient(-45deg, transparent 35%, var(--fauve-purple-3) 35%, var(--fauve-purple-3) 38%, transparent 38%),
-                    linear-gradient(135deg, transparent 62%, var(--fauve-purple-2) 62%, var(--fauve-purple-2) 65%, transparent 65%),
-                    repeating-linear-gradient(90deg, transparent, transparent 50px, var(--fauve-purple-3) 50px, var(--fauve-purple-3) 53px, transparent 53px, transparent 100px),
-                    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255, 255, 255, 0.1) 60px, rgba(255, 255, 255, 0.1) 62px);
-                opacity: 0.6;
-            }
-
-            /* 主容器 */
             .container {
                 min-height: 100vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                padding: 2rem 1rem;
+                padding: 3rem 1.5rem;
                 position: relative;
+                max-width: 480px;
+                margin: 0 auto;
             }
 
-            /* 野獸派頭像區域 */
             .profile-section {
                 text-align: center;
                 margin-bottom: 3rem;
@@ -107,133 +82,100 @@
             }
 
             .avatar {
-                width: 140px;
-                height: 140px;
+                width: 120px;
+                height: 120px;
                 border-radius: 50%;
-                border: 6px solid #000;
-                box-shadow: 8px 8px 0 var(--fauve-yellow);
-                transition: all 0.2s ease;
+                border: 2px solid var(--latte-surface0);
+                box-shadow: var(--muji);
+                transition: box-shadow 0.3s ease;
             }
 
             .avatar:hover {
-                transform: translate(-4px, -4px);
-                box-shadow: 12px 12px 0 var(--fauve-yellow);
+                box-shadow: var(--muji-md);
             }
 
             .name {
-                font-size: 3rem;
-                font-weight: 900;
-                color: #fff;
-                text-shadow:
-                    4px 4px 0 #000,
-                    -1px -1px 0 #000,
-                    1px -1px 0 #000,
-                    -1px 1px 0 #000,
-                    1px 1px 0 #000;
-                margin-bottom: 0.5rem;
-                letter-spacing: 2px;
+                font-size: 2rem;
+                font-weight: 500;
+                color: var(--latte-text);
+                margin-bottom: 0.3rem;
+                letter-spacing: 0.05em;
             }
 
             .subtitle {
-                font-size: 1.2rem;
-                color: var(--fauve-yellow);
-                font-weight: 700;
-                text-transform: uppercase;
+                font-size: 0.95rem;
+                color: var(--latte-subtext0);
+                font-weight: 400;
             }
 
-            /* 連結容器 */
             .links-container {
                 width: 100%;
                 max-width: 400px;
                 display: flex;
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.75rem;
             }
 
-            /* 野獸派連結卡片 */
             .link-card {
                 display: flex;
                 align-items: center;
-                padding: 1.5rem 2rem;
+                padding: 1rem 1.5rem;
                 text-decoration: none;
-                color: #000;
-                font-weight: 700;
-                border-radius: 8px;
-                border: 5px solid #000;
-                transition: all 0.2s ease;
+                color: var(--latte-text);
+                font-weight: 400;
+                border-radius: 12px;
+                border: 1px solid var(--latte-surface0);
+                background: #fff;
+                box-shadow: var(--muji-sm);
+                transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
                 position: relative;
-                overflow: visible;
             }
 
-            /* 為每張卡片設定不同的野獸派色彩 */
-            .link-card:nth-child(1) { background: var(--fauve-purple-2); }
-            .link-card:nth-child(2) { background: var(--fauve-yellow); }
-            .link-card:nth-child(3) { background: var(--fauve-purple-4); }
-            .link-card:nth-child(4) { background: var(--fauve-orange); }
-            .link-card:nth-child(5) { background: var(--fauve-cyan); }
-            .link-card:nth-child(6) { background: var(--fauve-purple-3); color: #fff; }
-            .link-card:nth-child(7) { background: var(--fauve-pink); }
-            .link-card:nth-child(8) { background: var(--fauve-purple-1); color: #fff; }
-
             .link-card:hover {
-                transform: translate(-3px, -3px);
-                box-shadow: 8px 8px 0 #000;
+                transform: translateY(-2px);
+                box-shadow: var(--muji-md);
+                border-color: var(--latte-sapphire);
             }
 
             .link-card:active {
-                transform: translate(0, 0);
-                box-shadow: 3px 3px 0 #000;
+                transform: translateY(0);
+                box-shadow: var(--muji-sm);
             }
 
             .link-icon {
                 margin-right: 1rem;
-                filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
+                color: var(--latte-sapphire);
             }
 
             .link-text {
                 flex: 1;
                 text-align: center;
-                font-size: 1.2rem;
-                font-weight: 800;
-                letter-spacing: 0.5px;
-                text-transform: uppercase;
+                font-size: 0.95rem;
+                font-weight: 400;
+                letter-spacing: 0.03em;
             }
 
-            /* 野獸派頁腳 */
             .footer {
                 margin-top: 3rem;
                 text-align: center;
-                color: #fff;
-                font-size: 1rem;
-                font-weight: 700;
-                text-shadow: 2px 2px 0 #000;
+                color: var(--latte-subtext0);
+                font-size: 0.8rem;
+                font-weight: 300;
+                letter-spacing: 0.05em;
             }
 
-            /* 野獸派響應式設計 */
             @media (max-width: 480px) {
                 .container {
-                    padding: 1.5rem 1rem;
+                    padding: 2rem 1rem;
                 }
 
                 .name {
-                    font-size: 2.2rem;
-                    text-shadow:
-                        3px 3px 0 #000,
-                        -1px -1px 0 #000,
-                        1px -1px 0 #000,
-                        -1px 1px 0 #000,
-                        1px 1px 0 #000;
+                    font-size: 1.6rem;
                 }
 
                 .avatar {
-                    width: 120px;
-                    height: 120px;
-                    border: 5px solid #000;
-                    box-shadow: 6px 6px 0 var(--fauve-yellow);
-                }
-
-                .avatar:hover {
-                    box-shadow: 8px 8px 0 var(--fauve-yellow);
+                    width: 100px;
+                    height: 100px;
                 }
 
                 .links-container {
@@ -241,22 +183,17 @@
                 }
 
                 .link-card {
-                    padding: 1.2rem 1.5rem;
-                    border: 4px solid #000;
-                }
-
-                .link-card:hover {
-                    box-shadow: 6px 6px 0 #000;
+                    padding: 0.9rem 1.2rem;
                 }
 
                 .link-text {
-                    font-size: 1rem;
+                    font-size: 0.9rem;
                 }
             }
 
-            /* 野獸派簡化動畫 */
             .fade-in {
-                animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+                opacity: 0;
+                animation: fadeInUp 0.5s ease forwards;
             }
 
             .fade-in:nth-child(1) { animation-delay: 0.05s; }
@@ -268,26 +205,17 @@
             .fade-in:nth-child(7) { animation-delay: 0.35s; }
             .fade-in:nth-child(8) { animation-delay: 0.4s; }
 
-            @keyframes popIn {
+            @keyframes fadeInUp {
                 from {
                     opacity: 0;
-                    transform: scale(0.8);
+                    transform: translateY(12px);
                 }
                 to {
                     opacity: 1;
-                    transform: scale(1);
+                    transform: translateY(0);
                 }
             }
 
-            /* 頭像旋轉效果 */
-            .pulse {
-                animation: rotate 8s linear infinite;
-            }
-
-            @keyframes rotate {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
         </style>
     </head>
     <body>
@@ -296,7 +224,7 @@
         <div class="container">
             <div class="profile-section">
                 <div class="avatar-container">
-                    <img src="https://avatars.githubusercontent.com/u/4278751?v=4" alt="Cash Wu" class="avatar pulse" />
+                    <img src="https://avatars.githubusercontent.com/u/4278751?v=4" alt="Cash Wu" class="avatar" />
                 </div>
                 <h1 class="name">Cash Wu</h1>
                 <!--<p class="subtitle">Developer & Designer</p>-->
@@ -345,43 +273,10 @@
             </div>
 
             <footer class="footer">
-                <p>© 2025 Cash Wu</p>
+                <p>© <span id="year"></span> Cash Wu</p>
             </footer>
         </div>
 
-        <script>
-            // 野獸派簡化互動效果
-            document.addEventListener("DOMContentLoaded", function () {
-                // 為連結卡片添加色彩變化效果
-                const linkCards = document.querySelectorAll(".link-card");
-                const colors = [
-                    'var(--fauve-purple-2)',
-                    'var(--fauve-yellow)',
-                    'var(--fauve-purple-4)',
-                    'var(--fauve-orange)',
-                    'var(--fauve-cyan)',
-                    'var(--fauve-purple-3)',
-                    'var(--fauve-pink)',
-                    'var(--fauve-purple-1)'
-                ];
-
-                linkCards.forEach((card, index) => {
-                    card.addEventListener('mouseenter', function() {
-                        // 隨機切換到另一個鮮豔顏色
-                        const currentIndex = index;
-                        let newIndex = currentIndex;
-                        while (newIndex === currentIndex) {
-                            newIndex = Math.floor(Math.random() * colors.length);
-                        }
-                        card.style.backgroundColor = colors[newIndex];
-                    });
-
-                    card.addEventListener('mouseleave', function() {
-                        // 恢復原本的顏色
-                        card.style.backgroundColor = colors[index];
-                    });
-                });
-            });
-        </script>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     </body>
 </html>
